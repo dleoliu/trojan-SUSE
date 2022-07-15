@@ -1,62 +1,65 @@
-# trojan
-![](https://img.shields.io/github/v/release/Jrohy/trojan.svg) 
-![](https://img.shields.io/docker/pulls/jrohy/trojan.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Jrohy/trojan)](https://goreportcard.com/report/github.com/Jrohy/trojan)
-[![Downloads](https://img.shields.io/github/downloads/Jrohy/trojan/total.svg)](https://img.shields.io/github/downloads/Jrohy/trojan/total.svg)
-[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+# trojan-SUSE
 
+专为 **SUSE Linux Enterprise（SLE）** 及 **openSUSE** 优化过的trojan多用户管理部署程序。
 
-trojan多用户管理部署程序
+基于[Jrohy/trojan](https://github.com/Jrohy/trojan)。详细参见上游项目或 `upstream` 分支。
+
+Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Trojan](https://github.com/trojan-gfw/trojan)。
+
+## SUSE优化
+
+- Zypper支持
+- 施工中：使用Zypper的自动vnstat安装与配置
+- 施工中：使用Zypper的自动Docker安装与配置
+
+※当前安装脚本依旧可供Debian及RHEL系Linux使用。今后停止对SUSE系以外Linux支持的可能。
+
+## 已测试SUSE
+
+### SUSE Linux Enterprise Server(SLES)
+
+- SLES 15 ~ SLES 15 SP4
+- SLES 12 SP5
+
+### openSUSE
+
+- openSUSE Leap 15.2（将结束支持）
+- openSUSE Leap 15.3 / 15.4
+- openSUSE Tumbleweed
 
 ## 功能
 - 在线web页面和命令行两种方式管理trojan多用户
-- 启动 / 停止 / 重启 trojan 服务端
+  - 启动 / 停止 / 重启 trojan 服务端
+  - 在线实时查看trojan日志
+  - 在线trojan和trojan-go随时切换
+  - 支持trojan://分享链接和二维码分享
+  - 支持转化为clash订阅地址并导入到[clash_for_windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)
 - 支持流量统计和流量限制
 - 命令行模式管理, 支持命令补全
 - 集成acme.sh证书申请
 - 生成客户端配置文件
-- 在线实时查看trojan日志
-- 在线trojan和trojan-go随时切换
-- 支持trojan://分享链接和二维码分享(仅限web页面)
-- 支持转化为clash订阅地址并导入到[clash_for_windows](https://github.com/Fndroid/clash_for_windows_pkg/releases)(仅限web页面)
 - 限制用户使用期限
 
 ## 安装方式
-*trojan使用请提前准备好服务器可用的域名*  
+**trojan使用请提前准备好服务器可用的域名。推荐使用SLES或openSUSE Leap。**
 
-###  a. 一键脚本安装
+### 安装/更新
 ```
-#安装/更新
-source <(curl -sL https://git.io/trojan-install)
-
-#卸载
-source <(curl -sL https://git.io/trojan-install) --remove
-
+git clone https://github.com/optimusleobear/trojan-SUSE.git
+cd trojan-SUSE/
+source install.sh
 ```
-安装完后输入'trojan'可进入管理程序   
-浏览器访问 https://域名 可在线web页面管理trojan用户  
-前端页面源码地址: [trojan-web](https://github.com/Jrohy/trojan-web)
+安装完后输入'trojan'可进入管理程序。
 
-### b. docker运行
-1. 安装mysql  
+浏览器访问域名可在线web页面管理trojan用户。
 
-因为mariadb内存使用比mysql至少减少一半, 所以推荐使用mariadb数据库
+前端页面源码地址: [trojan-web](https://github.com/Jrohy/trojan-web)。
+
+### 卸载
 ```
-docker run --name trojan-mariadb --restart=always -p 3306:3306 -v /home/mariadb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=trojan -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=trojan -d mariadb:10.2
+cd trojan-SUSE/
+source install.sh --remove
 ```
-端口和root密码以及持久化目录都可以改成其他的
-
-2. 安装trojan
-```
-docker run -it -d --name trojan --net=host --restart=always --privileged jrohy/trojan init
-```
-运行完后进入容器 `docker exec -it trojan bash`, 然后输入'trojan'即可进行初始化安装   
-
-启动web服务: `systemctl start trojan-web`   
-
-设置自启动: `systemctl enable trojan-web`
-
-更新管理程序: `source <(curl -sL https://git.io/trojan-install)`
 
 ## 运行截图
 ![avatar](asset/1.png)
@@ -92,10 +95,3 @@ Available Commands:
 Flags:
   -h, --help   help for trojan
 ```
-
-## 注意
-安装完trojan后强烈建议开启BBR等加速: [Linux-NetSpeed](https://github.com/chiakge/Linux-NetSpeed)  
-
-## Thanks
-感谢JetBrains提供的免费GoLand  
-[![avatar](asset/jetbrains.svg)](https://jb.gg/OpenSource)
