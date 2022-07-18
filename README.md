@@ -4,7 +4,7 @@
 
 基于[Jrohy/trojan](https://github.com/Jrohy/trojan)。
 
-Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Trojan](https://github.com/trojan-gfw/trojan)。
+trojan是一种安全且现代化的虚拟专用网络协议，使用TLS加密并可将流量伪装为普通HTTPS流量以达成混淆。详细参见[trojan](https://github.com/trojan-gfw/trojan)。
 
 ## SUSE优化
 
@@ -12,7 +12,9 @@ Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Troj
 - 施工中：使用Zypper的自动vnstat安装与配置
 - 施工中：使用Zypper的自动Docker安装与配置
 
-※当前安装脚本依旧可供基于Debian及RHEL的Linux发行版使用。今后存在停止支持SUSE系以外Linux发行版的可能。
+※ 由于该项目基于[Jrohy/trojan](https://github.com/Jrohy/trojan)，故同样可供基于Debian或RHEL的Linux发行版使用。
+
+※ 今后将可能发布仅适用于SUSE系Linux发行版的分支。
 
 ## 已测试SUSE
 
@@ -44,24 +46,28 @@ Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Troj
 
 **注意**
 
-1. Trojan使用请提前准备好服务器可用的域名。
-2. 推荐使用SLES或openSUSE Leap。openSUSE Tumbleweed经过测试但不保证在最新版本上的运行效果。
+1. trojan使用请提前准备好服务器可用的域名。
+1. 需使用`root`身份安装。
+1. 推荐使用SLES或openSUSE Leap。openSUSE Tumbleweed经过测试但不保证在最新版本上的运行效果。
+1. 推荐在干净的新建Linux实例中安装。
+
+安装时需要克隆该仓库到本地。
+```shell
+git clone https://github.com/optimusleobear/trojan-SUSE.git
+```
 
 ### 安装/更新
-```
-git clone https://github.com/optimusleobear/trojan-SUSE.git
-cd trojan-SUSE/
+```shell
 source install.sh
 ```
 安装完后输入'trojan'可进入管理程序。
 
-浏览器访问域名可在线web页面管理trojan用户。
+浏览器访问`https://`+域名可在线web页面管理trojan用户。
 
 前端页面源码地址: [trojan-web](https://github.com/Jrohy/trojan-web)。
 
 ### 卸载
-```
-cd trojan-SUSE/
+```shell
 source install.sh --remove
 ```
 
