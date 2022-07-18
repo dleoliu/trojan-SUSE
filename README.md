@@ -2,7 +2,7 @@
 
 专为 **SUSE Linux Enterprise（SLE）** 及 **openSUSE** 优化过的trojan多用户管理部署程序。
 
-基于[Jrohy/trojan](https://github.com/Jrohy/trojan)。详细参见上游项目或 `upstream` 分支。
+基于[Jrohy/trojan](https://github.com/Jrohy/trojan)。
 
 Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Trojan](https://github.com/trojan-gfw/trojan)。
 
@@ -12,7 +12,7 @@ Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Troj
 - 施工中：使用Zypper的自动vnstat安装与配置
 - 施工中：使用Zypper的自动Docker安装与配置
 
-※当前安装脚本依旧可供Debian及RHEL系Linux使用。今后停止对SUSE系以外Linux支持的可能。
+※当前安装脚本依旧可供基于Debian及RHEL的Linux发行版使用。今后存在停止支持SUSE系以外Linux发行版的可能。
 
 ## 已测试SUSE
 
@@ -41,7 +41,11 @@ Trojan是一种安全且现代化的虚拟专用网络协议，详细参见[Troj
 - 限制用户使用期限
 
 ## 安装方式
-**trojan使用请提前准备好服务器可用的域名。推荐使用SLES或openSUSE Leap。**
+
+**注意**
+
+1. Trojan使用请提前准备好服务器可用的域名。
+2. 推荐使用SLES或openSUSE Leap。openSUSE Tumbleweed经过测试但不保证在最新版本上的运行效果。
 
 ### 安装/更新
 ```
