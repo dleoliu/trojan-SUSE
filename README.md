@@ -4,7 +4,7 @@
 
 基于[Jrohy/trojan](https://github.com/Jrohy/trojan)。
 
-trojan是一种安全且现代化的虚拟专用网络协议，使用TLS加密并可将流量伪装为普通HTTPS流量以达成混淆。详细参见[trojan](https://github.com/trojan-gfw/trojan)。
+trojan是一种安全且现代化的虚拟专用网络协议，使用TLS加密并可将流量伪装为普通HTTPS流量以实现混淆。详细参见[trojan](https://github.com/trojan-gfw/trojan)。
 
 ## SUSE优化
 
@@ -13,8 +13,6 @@ trojan是一种安全且现代化的虚拟专用网络协议，使用TLS加密�
 - 施工中：使用Zypper的自动Docker安装与配置
 
 ※ 由于该项目基于[Jrohy/trojan](https://github.com/Jrohy/trojan)，故同样可供基于Debian或RHEL的Linux发行版使用。
-
-※ 今后将可能发布仅适用于SUSE系Linux发行版的分支。
 
 ## 已测试SUSE
 
@@ -51,14 +49,9 @@ trojan是一种安全且现代化的虚拟专用网络协议，使用TLS加密�
 1. 推荐使用SLES或openSUSE Leap。openSUSE Tumbleweed经过测试但不保证在最新版本上的运行效果。
 1. 推荐在干净的新建Linux实例中安装。
 
-安装时需要克隆该仓库到本地。
-```shell
-git clone https://github.com/optimusleobear/trojan-SUSE.git
-```
-
 ### 安装/更新
 ```shell
-source install.sh
+source <(curl -sL https://raw.githubusercontent.com/dleoliu/trojan-SUSE/main/install.sh)
 ```
 安装完后输入'trojan'可进入管理程序。
 
@@ -68,7 +61,7 @@ source install.sh
 
 ### 卸载
 ```shell
-source install.sh --remove
+source <(curl -sL https://raw.githubusercontent.com/dleoliu/trojan-SUSE/main/install.sh) --remove
 ```
 
 ## 运行截图
